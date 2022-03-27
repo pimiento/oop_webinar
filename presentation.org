@@ -1,0 +1,225 @@
+#+TITLE: OOP
+#+EMAIL: @pvavilin
+#+AUTHOR: @pvavilin
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:https://orgmode.org/org-info.js
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [smallest]
+#+LATEX_HEADER: \usetheme{default}
+#+LATEX_HEADER: \usecolortheme{crane}
+#+LATEX_HEADER: \RequirePackage{fancyvrb}
+#+LATEX_HEADER: \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
+#+LaTeX_HEADER: \lstset{basicstyle=\scriptsize\ttfamily}
+#+OPTIONS: \n:t ^:nil
+* Класс
+  #+BEGIN_SRC python :exports code
+    class Animal(object):
+        ...
+
+    class Cat(Animal):
+        ...
+  #+END_SRC
+  #+ATTR_LATEX: :width .57\textwidth
+  [[file:class_example.png]]
+* Объект
+  #+BEGIN_SRC python :exports code
+    a_cat = Cat(type="египетский")
+  #+END_SRC
+  #+ATTR_LATEX: :width .7\textwidth
+  [[file:cat_object.png]]
+* Объект
+  #+BEGIN_SRC python :exports code
+    a_cat = Cat(type="кроличий")
+  #+END_SRC
+  #+ATTR_LATEX: :width .7\textwidth
+  [[file:cat.jpg]]
+* Метод
+  #+BEGIN_SRC python :exports code
+    class Cat(Animal):
+        ...
+        def sleep(self, period):
+            self.activity = None
+            time.sleep(period)
+  #+END_SRC
+  #+ATTR_LATEX: :width .5\textwidth
+  [[file:cat_sleeping.jpeg]]
+* Атрибут
+  #+BEGIN_SRC python :exports code
+    class Cat(Animal):
+        tail_state = 'puffed up'
+        ...
+  #+END_SRC
+  #+ATTR_LATEX: :width .45\textwidth
+  [[file:cat_tail.jpg]]
+* Атрибут класса
+  Так мы говорим, что у всех кошек на Земле хвост задран
+  #+BEGIN_SRC python :exports code
+    class Cat(Animal):
+        tail_state = 'puffed up'
+        ...
+  #+END_SRC
+  А так только у какой-то конкретной кошки (у конкретного экземпляра объекта класса /Cat/)
+  #+BEGIN_SRC python :exports code
+    class Cat(Animal):
+        def __init__(self):
+            self.tail_state = 'puffed up'
+        ...
+  #+END_SRC
+* self
+  - self :: это указать на конкретный экземпляр объекта класса.
+  #+ATTR_LATEX: :width .53\textwidth
+  [[file:cats.png]]
+* self
+  #+BEGIN_SRC python :exports code
+    class Cat(Animal):
+        def meow(self):
+            print('Meow')
+
+    cat_1 = Cat()
+    cat_2 = Cat()
+    cat_3 = Cat()
+    cat_1.meow()
+    # Кто сказал "мяу"?
+  #+END_SRC
+* Инициализация
+  #+BEGIN_SRC python :exports code
+    class Cat(Animal):
+      def __init__(self,
+                   age,
+                   breed,
+                   color_schema,
+                   tail_state,
+                   is_domestic=False,
+                   family=None):
+          self.age = age
+          self.breed = breed
+          self.color_schema = color_schema
+          self.tail_state = tail_state,
+          self.is_domestic = is_domestic
+          self.family = family
+  #+END_SRC
+* Инициализация
+  #+BEGIN_SRC python :exports code
+    def take_cat(self, family):
+      if is_domestic:
+          raise Exception(
+            'Это домашняя кошка!'
+            ' Её нельзя забрать!'
+          )
+      self.is_domestic = True
+      self.family = family
+  #+END_SRC
+* Наследование
+  #+NAME: animals
+  #+BEGIN_SRC python :exprots code
+    class Animal:
+        def say(self):
+            raise NotImplementedError()
+
+    class Cat(Animal):
+        def say(self):
+            print('meow!')
+
+    class Dog(Animal):
+        def barking(self):
+            # что произойдёт?
+            return self.say()
+  #+END_SRC
+* Полиморфизм
+  #+BEGIN_SRC python :exports code :noweb tangle
+    def listen_to_animal(animal: Animal):
+        animal.say()
+
+    a_cat = Cat()
+    a_dog = Dog()
+    listen_to_animal(a_cat)
+    listen_to_animal(a_dog)
+  #+END_SRC
+* Инкапсуляция
+  - переменные и методы с одним подчёркиванием *_name* программисты договорились считать внутренними переменными
+  - переменные и методы с двойным подчёркиванием *_ _name* Python прячет особым образом (но к ним всё ещё можно получить доступ)
+* Инкапсуляция
+  #+BEGIN_SRC python :exports code :tangle encapsulation.py
+    class A:
+        x = 10
+        _y = 20
+        __z = 30
+
+    a = A()
+    print(a.x)   # -> 10
+    print(a._y)  # -> 20
+    try:
+        a.__z # -> ERROR!
+    except AttributeError as e:
+        print(e)
+    print(a._A__z)
+  #+END_SRC
+* Статические методы
+  Не требуют указания текущего объекта вызова
+  #+NAME: staticmethod
+  #+BEGIN_SRC python :exports code
+    class Cat:
+
+        @staticmethod
+        def say():
+            print("meow")
+
+    class AnotherCat:
+        pass
+
+    def say():
+        print("meow")
+  #+END_SRC
+* Статические методы
+  #+BEGIN_SRC python :exports code
+    AnotherCat.say = staticmethod(say)
+    cat_1 = Cat()
+    cat_2 = AnotherCat()
+    cat_1.say()
+    cat_2.say()
+  #+END_SRC
+* В Python всё есть объект
+  #+BEGIN_SRC python :exports both :results output
+    a = 10
+    print(a.bit_length())
+
+    def func(x, y):
+        return x + y
+
+    f = func
+    print(f.__name__)
+  #+END_SRC
+
+  #+RESULTS:
+  : 4
+  : func
+* Методы класса
+  #+BEGIN_SRC python :exports both :results output
+    class Animal:
+        @classmethod
+        def what_says(cls):
+            print(
+              f"{cls.__name__} "
+              "says {cls.say()}"
+            )
+
+    class Cat(Animal):
+        @staticmethod
+        def say():
+            return "meow"
+
+    Cat.what_says()
+  #+END_SRC
+
+  #+RESULTS:
+  : Cat says meow
+* Дополнительная литература
+  - __[[https://python-scripts.com/object-oriented-programming-in-python][Object Oriented Programming in Python]]__
+  - __[[https://pythonchik.ru/osnovy/osnovy-oop-v-python-klassy-obekty-metody][Основы ООП. Классы, объекты, методы]]__
+  - __[[https://ru.wikibooks.org/wiki/Python/%25D0%259E%25D0%25B1%25D1%258A%25D0%25B5%25D0%25BA%25D1%2582%25D0%25BD%25D0%25BE-%25D0%25BE%25D1%2580%25D0%25B8%25D0%25B5%25D0%25BD%25D1%2582%25D0%25B8%25D1%2580%25D0%25BE%25D0%25B2%25D0%25B0%25D0%25BD%25D0%25BD%25D0%25BE%25D0%25B5_%25D0%25BF%25D1%2580%25D0%25BE%25D0%25B3%25D1%2580%25D0%25B0%25D0%25BC%25D0%25BC%25D0%25B8%25D1%2580%25D0%25BE%25D0%25B2%25D0%25B0%25D0%25BD%25D0%25B8%25D0%25B5_%25D0%25BD%25D0%25B0_Python][wikibook]]__
+  - Марк Лутц. «Изучаем Python»
+  #+ATTR_LATEX: :width .3\textwidth
+  [[file:lutz.png]]
+* Вопросы-ответы
+  #+ATTR_LATEX: :width .6\textwidth
+  [[file:questions.jpg]]
