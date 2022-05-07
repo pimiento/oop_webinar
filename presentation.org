@@ -10,6 +10,7 @@
 #+LATEX_HEADER: \RequirePackage{fancyvrb}
 #+LATEX_HEADER: \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
 #+LaTeX_HEADER: \lstset{basicstyle=\scriptsize\ttfamily}
+#+LATEX_HEADER: \usebackgroundtemplate{\includegraphics[width=.99\paperwidth,height=.99\paperheight]{bg.jpeg}}
 #+OPTIONS: \n:t ^:nil
 * Класс
   #+BEGIN_SRC python :exports code
@@ -109,6 +110,45 @@
       self.is_domestic = True
       self.family = family
   #+END_SRC
+* @dataclass
+  __[[https://docs.python.org/3.8/library/dataclasses.html][документация]]__
+  #+BEGIN_SRC python :exports code
+    from dataclasses import dataclass
+
+    @dataclass
+    class Cat(Animal):
+        age: int
+        breed: str
+        color_schema: int
+        tail_state: int
+        is_domestic: bool = False
+        family: object = None
+  #+END_SRC
+* @dataclass
+  __[[https://docs.python.org/3.8/library/dataclasses.html][документация]]__
+  #+BEGIN_SRC python :exports code
+    class Cat(Animal):
+      def __init__(
+        self, age: int, breed: str,
+        color_schema: int, tail_state: int,
+        is_domestic: bool=False,
+        family: object=None
+      ):
+        self.age = age
+        self.breed = breed
+        self.color_schema = color_schema
+        self.tail_state = tail_state,
+        self.is_domestic = is_domestic
+        self.family = family
+  #+END_SRC
+* @dataclass
+  #+BEGIN_SRC python :exports code
+    @dataclasses.dataclass(
+        ,*, init=True, repr=True, eq=True,
+        order=False, unsafe_hash=False,
+        frozen=False
+    )
+  #+END_SRC
 * Наследование
   #+NAME: animals
   #+BEGIN_SRC python :exprots code
@@ -125,6 +165,46 @@
             # что произойдёт?
             return self.say()
   #+END_SRC
+* Наследование по-простому
+  Наследование это всего лишь порядок, по которому будет идти поиск атрибутов и методов.
+  #+BEGIN_SRC python :exports code :session one
+    # class A(object):
+    class A:
+        attr = 10
+        def method(self):
+            print("method")
+
+    class B(A):
+        attr = 20
+        def function(self):
+            print("function")
+  #+END_SRC
+
+* super
+  $super()$ возвращает объект родителя, чтобы мы могли запросить нужный нам метод/атрибут у родителя
+  #+BEGIN_SRC python :exports both :session one :results output
+    class B(A):
+        def function(self):
+            super().method()
+            (
+                self.__class__
+                .__bases__[0]
+                .method(self)
+            )
+            print("function")
+  #+END_SRC
+
+* super
+  #+BEGIN_SRC python :exports both :session one :results output
+    b = B()
+    b.function()
+  #+END_SRC
+
+  #+RESULTS:
+  : method
+  : method
+  : function
+
 * Полиморфизм
   #+BEGIN_SRC python :exports code :noweb tangle
     def listen_to_animal(animal: Animal):
@@ -193,26 +273,6 @@
   #+RESULTS:
   : 4
   : func
-* Методы класса
-  #+BEGIN_SRC python :exports both :results output
-    class Animal:
-        @classmethod
-        def what_says(cls):
-            print(
-              f"{cls.__name__} "
-              "says {cls.say()}"
-            )
-
-    class Cat(Animal):
-        @staticmethod
-        def say():
-            return "meow"
-
-    Cat.what_says()
-  #+END_SRC
-
-  #+RESULTS:
-  : Cat says meow
 * Дополнительная литература
   - __[[https://python-scripts.com/object-oriented-programming-in-python][Object Oriented Programming in Python]]__
   - __[[https://pythonchik.ru/osnovy/osnovy-oop-v-python-klassy-obekty-metody][Основы ООП. Классы, объекты, методы]]__
