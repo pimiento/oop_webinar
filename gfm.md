@@ -1,6 +1,6 @@
-- [Tech Stack](#org44146c0)
-- [Run project in DEV-Mode](#org92ed860)
-- [How to check your models](#org8365dc7)
+- [Tech Stack](#org4e747b9)
+- [Run project in DEV-Mode](#orgc60c06f)
+- [How to check your models](#orge150a8e)
 
 ![img](logo.png)
 
@@ -14,7 +14,7 @@
 Social network for bloggers.
 
 
-<a id="org44146c0"></a>
+<a id="org4e747b9"></a>
 
 # Tech Stack
 
@@ -22,7 +22,7 @@ Social network for bloggers.
 -   **Server:** Windows/Linux/MacOS/FreeBSD
 
 
-<a id="org92ed860"></a>
+<a id="orgc60c06f"></a>
 
 # Run project in DEV-Mode
 
@@ -57,7 +57,7 @@ Social network for bloggers.
     ```
 
 
-<a id="org8365dc7"></a>
+<a id="orge150a8e"></a>
 
 # How to check your models
 
