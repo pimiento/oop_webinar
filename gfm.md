@@ -1,21 +1,22 @@
-- [YaTube Project](#orgaf37616)
-  - [Social network for bloggers.](#orgc7f6d7b)
-- [Tech Stack](#org2be34b5)
-- [Run project in DEV-Mode](#org395a3b2)
+- [YaTube Project](#orgcb5fbc2)
+  - [Social network for bloggers.](#orgf0ea812)
+- [Tech Stack](#org3a31c20)
+- [Run project in DEV-Mode](#org7b7baf3)
+- [How to check your models](#org772f4dd)
 
 
 
-<a id="orgaf37616"></a>
+<a id="orgcb5fbc2"></a>
 
 # YaTube Project
 
 
-<a id="orgc7f6d7b"></a>
+<a id="orgf0ea812"></a>
 
 ## Social network for bloggers.
 
 
-<a id="org2be34b5"></a>
+<a id="org3a31c20"></a>
 
 # Tech Stack
 
@@ -23,7 +24,7 @@
 -   **Server:** Windows/Linux/MacOS/FreeBSD
 
 
-<a id="org395a3b2"></a>
+<a id="org7b7baf3"></a>
 
 # Run project in DEV-Mode
 
@@ -55,4 +56,23 @@
 
     ```shell
     python manage.py runserver
+    ```
+
+
+<a id="org772f4dd"></a>
+
+# How to check your models
+
+1.  Go to Django-shell
+
+    ```shell
+    source venv/bin/activate
+    python manage.py shell
+    ```
+2.  Check your users models
+
+    ```python
+    from posts.models import User
+
+    all_users = User.objects.all()
     ```
