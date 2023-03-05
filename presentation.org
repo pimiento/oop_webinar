@@ -219,11 +219,25 @@
   - переменные и методы с одним подчёркиванием *_name* программисты договорились считать внутренними переменными
   - переменные и методы с двойным подчёркиванием *_ _name* Python прячет особым образом (но к ним всё ещё можно получить доступ)
 * Инкапсуляция
-  #+BEGIN_SRC python :exports code :tangle encapsulation.py
+  #+NAME: class_a
+  #+begin_src python :exports none
     class A:
         x = 10
         _y = 20
         __z = 30
+  #+end_src
+  #+BEGIN_SRC python :exports code :noweb yes
+    <<class_a>>
+
+    a = A()
+    print(a.x)    # -> 10
+    print(a._y)   # -> 20
+    print(a.__z)  # -> ???
+  #+END_SRC
+
+* Инкапсуляция
+  #+BEGIN_SRC python :exports code :tangle encapsulation.py :noweb strip-export
+    <<class_a>>
 
     a = A()
     print(a.x)   # -> 10
@@ -233,7 +247,37 @@
     except AttributeError as e:
         print(e)
     print(a._A__z)
+    a._A__z = 0
+    print(a._A__z)
   #+END_SRC
+
+* setter / getter
+  #+NAME: setter_getter
+  #+begin_src python :exports code :noweb yes
+    <<class_a>>
+        @property
+        def z(self):
+            return self.__z
+        @z.setter
+        def z(self, val):
+            if value < 0:
+                raise ValueError(f"{val}<0")
+            self.__z = valuelP
+            return value
+  #+end_src
+
+* setter/getter
+  #+begin_src python :exports code :tangle encapsulation_plus.py :noweb strip-export
+    <<setter_getter>>
+
+    a = A()
+    print(a.x)   # -> 10
+    print(a._y)  # -> 20
+    print(a.z)   # -> ???
+    a.z = 0
+    print(a.z)   # -> ???
+  #+end_src
+
 * Статические методы
   Не требуют указания текущего объекта вызова
   #+NAME: staticmethod

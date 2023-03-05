@@ -1,32 +1,35 @@
-- [Класс](#org386627e)
-- [Объект](#orgd40f3f1)
-- [Объект](#org68f3c2c)
-- [Метод](#orgeebc6f1)
-- [Атрибут](#org885e395)
-- [Атрибут класса](#org45f713a)
-- [self](#orgf9b4db4)
-- [self](#org03b3e02)
-- [Инициализация](#org26bf28e)
-- [Инициализация](#org76ca137)
-- [@dataclass](#org2c32bc8)
-- [@dataclass](#org2d28a78)
-- [@dataclass](#orgc658fd2)
-- [Наследование](#org8a66d4a)
-- [Наследование по-простому](#org7580190)
-- [super](#orgc1ca2a5)
-- [super](#org5219b71)
-- [Полиморфизм](#orgab61349)
-- [Инкапсуляция](#orgb937eca)
-- [Инкапсуляция](#org74bbfdb)
-- [Статические методы](#org519c7b9)
-- [Статические методы](#orgefa1f0f)
-- [В Python всё есть объект](#org3a76047)
-- [Дополнительная литература](#orga279ddf)
-- [Вопросы-ответы](#org0856552)
+- [Класс](#org3c3cd5f)
+- [Объект](#orge7ec5ee)
+- [Объект](#org9982520)
+- [Метод](#org8332b04)
+- [Атрибут](#org0b7cb8f)
+- [Атрибут класса](#org39627f4)
+- [self](#org0a838ce)
+- [self](#org0adcecc)
+- [Инициализация](#org2b019fc)
+- [Инициализация](#orgc1d2bf1)
+- [@dataclass](#orga4108fe)
+- [@dataclass](#orga962354)
+- [@dataclass](#org88a5eac)
+- [Наследование](#org35b84e5)
+- [Наследование по-простому](#orgee63ee7)
+- [super](#orgdf4df9a)
+- [super](#org853a421)
+- [Полиморфизм](#org1515ef2)
+- [Инкапсуляция](#org3a07516)
+- [Инкапсуляция](#org3b27c22)
+- [Инкапсуляция](#orgd161705)
+- [setter / getter](#org134a308)
+- [setter/getter](#org62f5994)
+- [Статические методы](#org65cd4e9)
+- [Статические методы](#orgf549ad9)
+- [В Python всё есть объект](#orga0aacea)
+- [Дополнительная литература](#orgb983eb4)
+- [Вопросы-ответы](#orgda065f5)
 
 
 
-<a id="org386627e"></a>
+<a id="org3c3cd5f"></a>
 
 # Класс
 
@@ -41,7 +44,7 @@ class Cat(Animal):
 ![img](class_example.png)  
 
 
-<a id="orgd40f3f1"></a>
+<a id="orge7ec5ee"></a>
 
 # Объект
 
@@ -52,7 +55,7 @@ a_cat = Cat(type="египетский")
 ![img](cat_object.png)  
 
 
-<a id="org68f3c2c"></a>
+<a id="org9982520"></a>
 
 # Объект
 
@@ -63,7 +66,7 @@ a_cat = Cat(type="кроличий")
 ![img](cat.jpg)  
 
 
-<a id="orgeebc6f1"></a>
+<a id="org8332b04"></a>
 
 # Метод
 
@@ -78,7 +81,7 @@ class Cat(Animal):
 ![img](cat_sleeping.jpeg)  
 
 
-<a id="org885e395"></a>
+<a id="org0b7cb8f"></a>
 
 # Атрибут
 
@@ -91,7 +94,7 @@ class Cat(Animal):
 ![img](cat_tail.jpg)  
 
 
-<a id="org45f713a"></a>
+<a id="org39627f4"></a>
 
 # Атрибут класса
 
@@ -113,7 +116,7 @@ class Cat(Animal):
 ```
 
 
-<a id="orgf9b4db4"></a>
+<a id="org0a838ce"></a>
 
 # self
 
@@ -122,7 +125,7 @@ class Cat(Animal):
 ![img](cats.png)  
 
 
-<a id="org03b3e02"></a>
+<a id="org0adcecc"></a>
 
 # self
 
@@ -139,7 +142,7 @@ cat_1.meow()
 ```
 
 
-<a id="org26bf28e"></a>
+<a id="org2b019fc"></a>
 
 # Инициализация
 
@@ -161,7 +164,7 @@ class Cat(Animal):
 ```
 
 
-<a id="org76ca137"></a>
+<a id="orgc1d2bf1"></a>
 
 # Инициализация
 
@@ -177,7 +180,7 @@ def take_cat(self, family):
 ```
 
 
-<a id="org2c32bc8"></a>
+<a id="orga4108fe"></a>
 
 # @dataclass
 
@@ -197,7 +200,7 @@ class Cat(Animal):
 ```
 
 
-<a id="org2d28a78"></a>
+<a id="orga962354"></a>
 
 # @dataclass
 
@@ -220,7 +223,7 @@ class Cat(Animal):
 ```
 
 
-<a id="orgc658fd2"></a>
+<a id="org88a5eac"></a>
 
 # @dataclass
 
@@ -233,7 +236,7 @@ class Cat(Animal):
 ```
 
 
-<a id="org8a66d4a"></a>
+<a id="org35b84e5"></a>
 
 # Наследование
 
@@ -253,7 +256,7 @@ class Dog(Animal):
 ```
 
 
-<a id="org7580190"></a>
+<a id="orgee63ee7"></a>
 
 # Наследование по-простому
 
@@ -273,7 +276,7 @@ class B(A):
 ```
 
 
-<a id="orgc1ca2a5"></a>
+<a id="orgdf4df9a"></a>
 
 # super
 
@@ -292,7 +295,7 @@ class B(A):
 ```
 
 
-<a id="org5219b71"></a>
+<a id="org853a421"></a>
 
 # super
 
@@ -306,7 +309,7 @@ b.function()
     function
 
 
-<a id="orgab61349"></a>
+<a id="org1515ef2"></a>
 
 # Полиморфизм
 
@@ -321,7 +324,7 @@ listen_to_animal(a_dog)
 ```
 
 
-<a id="orgb937eca"></a>
+<a id="org3a07516"></a>
 
 # Инкапсуляция
 
@@ -329,7 +332,7 @@ listen_to_animal(a_dog)
 -   переменные и методы с двойным подчёркиванием **\_ \_name** Python прячет особым образом (но к ним всё ещё можно получить доступ)
 
 
-<a id="org74bbfdb"></a>
+<a id="org3b27c22"></a>
 
 # Инкапсуляция
 
@@ -340,6 +343,20 @@ class A:
     __z = 30
 
 a = A()
+print(a.x)    # -> 10
+print(a._y)   # -> 20
+print(a.__z)  # -> ???
+```
+
+
+<a id="orgd161705"></a>
+
+# Инкапсуляция
+
+```python
+
+
+a = A()
 print(a.x)   # -> 10
 print(a._y)  # -> 20
 try:
@@ -347,10 +364,49 @@ try:
 except AttributeError as e:
     print(e)
 print(a._A__z)
+a._A__z = 0
+print(a._A__z)
 ```
 
 
-<a id="org519c7b9"></a>
+<a id="org134a308"></a>
+
+# setter / getter
+
+```python
+class A:
+    x = 10
+    _y = 20
+    __z = 30
+    @property
+    def z(self):
+        return self.__z
+    @z.setter
+    def z(self, val):
+        if value < 0:
+            raise ValueError(f"{val}<0")
+        self.__z = valuelP
+        return value
+```
+
+
+<a id="org62f5994"></a>
+
+# setter/getter
+
+```python
+
+
+a = A()
+print(a.x)   # -> 10
+print(a._y)  # -> 20
+print(a.z)   # -> ???
+a.z = 0
+print(a.z)   # -> ???
+```
+
+
+<a id="org65cd4e9"></a>
 
 # Статические методы
 
@@ -371,7 +427,7 @@ def say():
 ```
 
 
-<a id="orgefa1f0f"></a>
+<a id="orgf549ad9"></a>
 
 # Статические методы
 
@@ -384,7 +440,7 @@ cat_2.say()
 ```
 
 
-<a id="org3a76047"></a>
+<a id="orga0aacea"></a>
 
 # В Python всё есть объект
 
@@ -403,7 +459,7 @@ print(f.__name__)
     func
 
 
-<a id="orga279ddf"></a>
+<a id="orgb983eb4"></a>
 
 # Дополнительная литература
 
@@ -415,7 +471,7 @@ print(f.__name__)
 ![img](lutz.png)  
 
 
-<a id="org0856552"></a>
+<a id="orgda065f5"></a>
 
 # Вопросы-ответы
 
