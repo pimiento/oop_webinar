@@ -1,35 +1,56 @@
-- [Класс](#org3c3cd5f)
-- [Объект](#orge7ec5ee)
-- [Объект](#org9982520)
-- [Метод](#org8332b04)
-- [Атрибут](#org0b7cb8f)
-- [Атрибут класса](#org39627f4)
-- [self](#org0a838ce)
-- [self](#org0adcecc)
-- [Инициализация](#org2b019fc)
-- [Инициализация](#orgc1d2bf1)
-- [@dataclass](#orga4108fe)
-- [@dataclass](#orga962354)
-- [@dataclass](#org88a5eac)
-- [Наследование](#org35b84e5)
-- [Наследование по-простому](#orgee63ee7)
-- [super](#orgdf4df9a)
-- [super](#org853a421)
-- [Полиморфизм](#org1515ef2)
-- [Инкапсуляция](#org3a07516)
-- [Инкапсуляция](#org3b27c22)
-- [Инкапсуляция](#orgd161705)
-- [setter / getter](#org134a308)
-- [setter/getter](#org62f5994)
-- [Статические методы](#org65cd4e9)
-- [Статические методы](#orgf549ad9)
-- [В Python всё есть объект](#orga0aacea)
-- [Дополнительная литература](#orgb983eb4)
-- [Вопросы-ответы](#orgda065f5)
+- [Что было до ООП](#org6d4c384)
+- [Класс](#orgfa3d63f)
+- [Объект](#org5454856)
+- [Объект](#orgfd78f73)
+- [Метод](#orge3a03fb)
+- [Атрибут](#orgd159271)
+- [Атрибут класса](#org05579f3)
+- [self](#orgca66bf3)
+- [self](#org629e5e8)
+- [Инициализация](#orge139351)
+- [Инициализация](#org03d3fcc)
+- [@dataclass](#orgf92cd12)
+- [@dataclass](#org3de3b9a)
+- [@dataclass](#org87e1c58)
+- [Наследование](#org698afd2)
+- [Наследование по-простому](#org9218bf5)
+- [super](#org80bca50)
+- [super](#org2f36ec6)
+- [Полиморфизм](#org3524459)
+- [Инкапсуляция](#org2342a0f)
+- [Инкапсуляция](#org445edbb)
+- [Инкапсуляция](#org5985103)
+- [setter / getter](#orgd2d2d83)
+- [setter/getter](#org8c646ad)
+- [Статические методы](#orgf0ec584)
+- [Статические методы](#org13ec5b1)
+- [В Python всё есть объект](#org0cf042f)
+- [Дополнительная литература](#org35b8556)
+- [Вопросы-ответы](#orgc47c858)
 
 
 
-<a id="org3c3cd5f"></a>
+<a id="org6d4c384"></a>
+
+# Что было до ООП
+
+Код был **императивным**, то есть команды построчно выполнялись  
+
+```python
+counter = 0
+while counter <= 3:
+    counter += 1
+    print(f"Step {counter}")
+
+counter = 0
+result = 0
+while counter <= 3:
+    result += counter
+    counter += 1
+```
+
+
+<a id="orgfa3d63f"></a>
 
 # Класс
 
@@ -44,7 +65,7 @@ class Cat(Animal):
 ![img](class_example.png)  
 
 
-<a id="orge7ec5ee"></a>
+<a id="org5454856"></a>
 
 # Объект
 
@@ -55,7 +76,7 @@ a_cat = Cat(type="египетский")
 ![img](cat_object.png)  
 
 
-<a id="org9982520"></a>
+<a id="orgfd78f73"></a>
 
 # Объект
 
@@ -66,7 +87,7 @@ a_cat = Cat(type="кроличий")
 ![img](cat.jpg)  
 
 
-<a id="org8332b04"></a>
+<a id="orge3a03fb"></a>
 
 # Метод
 
@@ -81,7 +102,7 @@ class Cat(Animal):
 ![img](cat_sleeping.jpeg)  
 
 
-<a id="org0b7cb8f"></a>
+<a id="orgd159271"></a>
 
 # Атрибут
 
@@ -94,7 +115,7 @@ class Cat(Animal):
 ![img](cat_tail.jpg)  
 
 
-<a id="org39627f4"></a>
+<a id="org05579f3"></a>
 
 # Атрибут класса
 
@@ -116,7 +137,7 @@ class Cat(Animal):
 ```
 
 
-<a id="org0a838ce"></a>
+<a id="orgca66bf3"></a>
 
 # self
 
@@ -125,7 +146,7 @@ class Cat(Animal):
 ![img](cats.png)  
 
 
-<a id="org0adcecc"></a>
+<a id="org629e5e8"></a>
 
 # self
 
@@ -142,7 +163,7 @@ cat_1.meow()
 ```
 
 
-<a id="org2b019fc"></a>
+<a id="orge139351"></a>
 
 # Инициализация
 
@@ -164,7 +185,7 @@ class Cat(Animal):
 ```
 
 
-<a id="orgc1d2bf1"></a>
+<a id="org03d3fcc"></a>
 
 # Инициализация
 
@@ -180,7 +201,7 @@ def take_cat(self, family):
 ```
 
 
-<a id="orga4108fe"></a>
+<a id="orgf92cd12"></a>
 
 # @dataclass
 
@@ -200,7 +221,7 @@ class Cat(Animal):
 ```
 
 
-<a id="orga962354"></a>
+<a id="org3de3b9a"></a>
 
 # @dataclass
 
@@ -223,7 +244,7 @@ class Cat(Animal):
 ```
 
 
-<a id="org88a5eac"></a>
+<a id="org87e1c58"></a>
 
 # @dataclass
 
@@ -236,7 +257,7 @@ class Cat(Animal):
 ```
 
 
-<a id="org35b84e5"></a>
+<a id="org698afd2"></a>
 
 # Наследование
 
@@ -256,7 +277,7 @@ class Dog(Animal):
 ```
 
 
-<a id="orgee63ee7"></a>
+<a id="org9218bf5"></a>
 
 # Наследование по-простому
 
@@ -276,7 +297,7 @@ class B(A):
 ```
 
 
-<a id="orgdf4df9a"></a>
+<a id="org80bca50"></a>
 
 # super
 
@@ -295,7 +316,7 @@ class B(A):
 ```
 
 
-<a id="org853a421"></a>
+<a id="org2f36ec6"></a>
 
 # super
 
@@ -309,7 +330,7 @@ b.function()
     function
 
 
-<a id="org1515ef2"></a>
+<a id="org3524459"></a>
 
 # Полиморфизм
 
@@ -324,7 +345,7 @@ listen_to_animal(a_dog)
 ```
 
 
-<a id="org3a07516"></a>
+<a id="org2342a0f"></a>
 
 # Инкапсуляция
 
@@ -332,7 +353,7 @@ listen_to_animal(a_dog)
 -   переменные и методы с двойным подчёркиванием **\_ \_name** Python прячет особым образом (но к ним всё ещё можно получить доступ)
 
 
-<a id="org3b27c22"></a>
+<a id="org445edbb"></a>
 
 # Инкапсуляция
 
@@ -349,7 +370,7 @@ print(a.__z)  # -> ???
 ```
 
 
-<a id="orgd161705"></a>
+<a id="org5985103"></a>
 
 # Инкапсуляция
 
@@ -369,7 +390,7 @@ print(a._A__z)
 ```
 
 
-<a id="org134a308"></a>
+<a id="orgd2d2d83"></a>
 
 # setter / getter
 
@@ -390,7 +411,7 @@ class A:
 ```
 
 
-<a id="org62f5994"></a>
+<a id="org8c646ad"></a>
 
 # setter/getter
 
@@ -406,7 +427,7 @@ print(a.z)   # -> ???
 ```
 
 
-<a id="org65cd4e9"></a>
+<a id="orgf0ec584"></a>
 
 # Статические методы
 
@@ -427,7 +448,7 @@ def say():
 ```
 
 
-<a id="orgf549ad9"></a>
+<a id="org13ec5b1"></a>
 
 # Статические методы
 
@@ -440,7 +461,7 @@ cat_2.say()
 ```
 
 
-<a id="orga0aacea"></a>
+<a id="org0cf042f"></a>
 
 # В Python всё есть объект
 
@@ -459,7 +480,7 @@ print(f.__name__)
     func
 
 
-<a id="orgb983eb4"></a>
+<a id="org35b8556"></a>
 
 # Дополнительная литература
 
@@ -471,7 +492,7 @@ print(f.__name__)
 ![img](lutz.png)  
 
 
-<a id="orgda065f5"></a>
+<a id="orgc47c858"></a>
 
 # Вопросы-ответы
 

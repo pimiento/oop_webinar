@@ -12,6 +12,20 @@
 #+LaTeX_HEADER: \lstset{basicstyle=\scriptsize\ttfamily}
 #+LATEX_HEADER: \usebackgroundtemplate{\includegraphics[width=.99\paperwidth,height=.99\paperheight]{bg.jpeg}}
 #+OPTIONS: \n:t ^:nil
+* Что было до ООП
+  Код был *императивным*, то есть команды построчно выполнялись
+  #+begin_src python :exports code
+    counter = 0
+    while counter <= 3:
+        counter += 1
+        print(f"Step {counter}")
+
+    counter = 0
+    result = 0
+    while counter <= 3:
+        result += counter
+        counter += 1
+  #+end_src
 * Класс
   #+BEGIN_SRC python :exports code
     class Animal(object):
