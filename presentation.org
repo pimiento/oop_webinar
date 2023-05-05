@@ -116,7 +116,7 @@
 * Инициализация
   #+BEGIN_SRC python :exports code
     def take_cat(self, family):
-      if is_domestic:
+      if self.is_domestic:
           raise Exception(
             'Это домашняя кошка!'
             ' Её нельзя забрать!'
@@ -273,10 +273,10 @@
         def z(self):
             return self.__z
         @z.setter
-        def z(self, val):
+        def z(self, value):
             if value < 0:
                 raise ValueError(f"{val}<0")
-            self.__z = valuelP
+            self.__z = value
             return value
   #+end_src
 
